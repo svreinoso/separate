@@ -1,0 +1,11 @@
+C:\Users\Samuel\source\repos\Separate\Separate.Services\bin\Debug\netcoreapp3.0\Separate.Services.deps.json
+C:\Users\Samuel\source\repos\Separate\Separate.Services\bin\Debug\netcoreapp3.0\Separate.Services.dll
+C:\Users\Samuel\source\repos\Separate\Separate.Services\bin\Debug\netcoreapp3.0\Separate.Services.pdb
+C:\Users\Samuel\source\repos\Separate\Separate.Services\bin\Debug\netcoreapp3.0\Separate.Data.dll
+C:\Users\Samuel\source\repos\Separate\Separate.Services\bin\Debug\netcoreapp3.0\Separate.Data.pdb
+C:\Users\Samuel\source\repos\Separate\Separate.Services\obj\Debug\netcoreapp3.0\Separate.Services.csprojAssemblyReference.cache
+C:\Users\Samuel\source\repos\Separate\Separate.Services\obj\Debug\netcoreapp3.0\Separate.Services.AssemblyInfoInputs.cache
+C:\Users\Samuel\source\repos\Separate\Separate.Services\obj\Debug\netcoreapp3.0\Separate.Services.AssemblyInfo.cs
+C:\Users\Samuel\source\repos\Separate\Separate.Services\obj\Debug\netcoreapp3.0\Separate.Services.csproj.CopyComplete
+C:\Users\Samuel\source\repos\Separate\Separate.Services\obj\Debug\netcoreapp3.0\Separate.Services.dll
+C:\Users\Samuel\source\repos\Separate\Separate.Services\obj\Debug\netcoreapp3.0\Separate.Services.pdb
