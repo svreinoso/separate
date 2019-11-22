@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNet.Security.OpenIdConnect.Primitives;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,24 +29,43 @@ namespace Separate
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                    assembly => assembly.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
+                    assembly => assembly.MigrationsAssembly("Separate.Api"));
 
-                services.AddIdentity<User, IdentityRole>()
-                    .AddEntityFrameworkStores<ApplicationDbContext>()
-                    .AddDefaultTokenProviders();
+                options.UseOpenIddict();
             });
 
-            services.AddCors(options => options.AddPolicy("CorsPolicy",
-            builder =>
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options =>
             {
-                builder.WithOrigins("http://localhost:44329").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
-                       //.AllowCredentials();
+                options.ClaimsIdentity.UserNameClaimType = OpenIdConnectConstants.Claims.Name;
+                options.ClaimsIdentity.UserIdClaimType = OpenIdConnectConstants.Claims.Subject;
+                options.ClaimsIdentity.RoleClaimType = OpenIdConnectConstants.Claims.Role;
+            });
+
+            services.AddOpenIddict()
+            .AddCore(options =>
+            {
+                options.UseEntityFrameworkCore().UseDbContext<ApplicationDbContext>();
+            }).AddServer(options =>
+            {
+                options.UseMvc();
+                options.EnableTokenEndpoint("/connect/token");
+                options.AllowPasswordFlow();
+                options.DisableHttpsRequirement();
+                options.AcceptAnonymousClients();
+            }).AddValidation();
+
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.WithOrigins("https://localhost:44329").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
             }));
 
             services.AddSignalR();
@@ -53,11 +73,9 @@ namespace Separate
             services.AddControllers();
 
             services.AddTransient<IEmailServices, EmailServices>();
-
-
+            
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -65,19 +83,16 @@ namespace Separate
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            //app.UseCors("CorsPolicy");
-
-            app.UseCors(x =>
-            {
-                x.WithOrigins("https://localhost:44329/").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
-            });
-
+            app.UseCors("CorsPolicy");
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

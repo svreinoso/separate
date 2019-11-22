@@ -66,3 +66,4 @@ C:\Users\Samuel\source\repos\Separate\Separate.AutoRun\bin\Debug\netcoreapp3.0\S
 C:\Users\Samuel\source\repos\Separate\Separate.AutoRun\obj\Debug\netcoreapp3.0\Separate.AutoRun.csproj.CopyComplete
 C:\Users\Samuel\source\repos\Separate\Separate.AutoRun\obj\Debug\netcoreapp3.0\Separate.AutoRun.dll
 C:\Users\Samuel\source\repos\Separate\Separate.AutoRun\obj\Debug\netcoreapp3.0\Separate.AutoRun.pdb
+C:\Users\Samuel\source\repos\Separate\Separate.AutoRun\bin\Debug\netcoreapp3.0\DataAnnotationsExtensions.dll

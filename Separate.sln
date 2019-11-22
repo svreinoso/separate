@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Separate.AutoRun", "Separat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Separate.Web", "Separate.Web\Separate.Web.csproj", "{634F6369-297A-4687-9EC4-86C97D8FE142}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Separate.Models", "Separate.Models\Separate.Models.csproj", "{63BDE85B-52A0-474A-A994-83150444DA4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{634F6369-297A-4687-9EC4-86C97D8FE142}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634F6369-297A-4687-9EC4-86C97D8FE142}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634F6369-297A-4687-9EC4-86C97D8FE142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63BDE85B-52A0-474A-A994-83150444DA4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63BDE85B-52A0-474A-A994-83150444DA4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63BDE85B-52A0-474A-A994-83150444DA4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63BDE85B-52A0-474A-A994-83150444DA4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
