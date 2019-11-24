@@ -1,8 +1,0 @@
-C:\Users\Samuel\source\repos\Separate\Separate.Models\bin\Debug\netcoreapp3.0\Separate.Models.deps.json
-C:\Users\Samuel\source\repos\Separate\Separate.Models\bin\Debug\netcoreapp3.0\Separate.Models.dll
-C:\Users\Samuel\source\repos\Separate\Separate.Models\bin\Debug\netcoreapp3.0\Separate.Models.pdb
-C:\Users\Samuel\source\repos\Separate\Separate.Models\obj\Debug\netcoreapp3.0\Separate.Models.csprojAssemblyReference.cache
-C:\Users\Samuel\source\repos\Separate\Separate.Models\obj\Debug\netcoreapp3.0\Separate.Models.AssemblyInfoInputs.cache
-C:\Users\Samuel\source\repos\Separate\Separate.Models\obj\Debug\netcoreapp3.0\Separate.Models.AssemblyInfo.cs
-C:\Users\Samuel\source\repos\Separate\Separate.Models\obj\Debug\netcoreapp3.0\Separate.Models.dll
-C:\Users\Samuel\source\repos\Separate\Separate.Models\obj\Debug\netcoreapp3.0\Separate.Models.pdb

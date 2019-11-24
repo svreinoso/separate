@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AspNet.Security.OpenIdConnect.Primitives;
+﻿using AspNet.Security.OpenIdConnect.Primitives;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Separate.Data;
 using Separate.Data.Entities;
 using Separate.Services;
@@ -31,13 +23,27 @@ namespace Separate
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                options.UseSqlite(Configuration.GetConnectionString("SqliteConnection"),
                     assembly => assembly.MigrationsAssembly("Separate.Api"));
-
-                options.UseOpenIddict();
             });
+
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //{
+            //    options.UseMySql(Configuration.GetConnectionString("MySqlConnection"),
+            //        assembly => assembly.MigrationsAssembly("Separate.Api"));
+            //});
+
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //{
+
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+            //        assembly => assembly.MigrationsAssembly("Separate.Api"));
+
+            //    options.UseOpenIddict();
+            //});
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -51,6 +57,7 @@ namespace Separate
             });
 
             services.AddOpenIddict()
+
             .AddCore(options =>
             {
                 options.UseEntityFrameworkCore().UseDbContext<ApplicationDbContext>();
@@ -65,7 +72,8 @@ namespace Separate
 
             services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
             {
-                builder.WithOrigins("https://localhost:44329").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                builder.WithOrigins("https://localhost:44329", "https://localhost:5001",
+                    "https://localhost:5000").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
             }));
 
             services.AddSignalR();
@@ -82,6 +90,9 @@ namespace Separate
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            var serviceProvider = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope().ServiceProvider;
+            SeedDatabase.Initialize(serviceProvider);
 
             app.UseAuthentication();
 

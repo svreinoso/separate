@@ -1,0 +1,10 @@
+.vs/Separate/xs/*
+Separate/Properties/PublishProfiles/*
+Separate/separate.db
+Separate/separate.db-wal
+Separate.Data/bin/*
+Separate.Data/obj/*
+Separate.Models/bin/*
+Separate.Models/obj/*
+Separate.Services/bin/*
+Separate.Services/obj/*

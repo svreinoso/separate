@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Separate.Data;
 using Separate.Data.Entities;
+using Separate.Data.Enums;
 
 namespace Separate.Api.Controllers
 {
@@ -45,6 +47,7 @@ namespace Separate.Api.Controllers
         // PUT: api/Models/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        //[Authorize(Roles = AppRoles.Admin)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutModel(int id, Model model)
         {
@@ -77,6 +80,7 @@ namespace Separate.Api.Controllers
         // POST: api/Models
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        //[Authorize(Roles = AppRoles.Admin)]
         [HttpPost]
         public async Task<ActionResult<Model>> PostModel(Model model)
         {
@@ -87,6 +91,7 @@ namespace Separate.Api.Controllers
         }
 
         // DELETE: api/Models/5
+        //[Authorize(Roles = AppRoles.Admin)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Model>> DeleteModel(int id)
         {

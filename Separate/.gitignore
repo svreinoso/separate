@@ -1,0 +1,4 @@
+﻿separate.db
+separate.db-wal
+obj/*
+bin/*

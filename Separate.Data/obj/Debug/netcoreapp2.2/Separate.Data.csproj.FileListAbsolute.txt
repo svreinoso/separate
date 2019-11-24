@@ -1,8 +1,0 @@
-C:\Users\Samuel\source\repos\Separate\Separate.Data\bin\Debug\netcoreapp2.2\Separate.Data.deps.json
-C:\Users\Samuel\source\repos\Separate\Separate.Data\bin\Debug\netcoreapp2.2\Separate.Data.dll
-C:\Users\Samuel\source\repos\Separate\Separate.Data\obj\Debug\netcoreapp2.2\Separate.Data.csproj.CoreCompileInputs.cache
-C:\Users\Samuel\source\repos\Separate\Separate.Data\obj\Debug\netcoreapp2.2\Separate.Data.AssemblyInfoInputs.cache
-C:\Users\Samuel\source\repos\Separate\Separate.Data\obj\Debug\netcoreapp2.2\Separate.Data.AssemblyInfo.cs
-C:\Users\Samuel\source\repos\Separate\Separate.Data\bin\Debug\netcoreapp2.2\Separate.Data.pdb
-C:\Users\Samuel\source\repos\Separate\Separate.Data\obj\Debug\netcoreapp2.2\Separate.Data.dll
-C:\Users\Samuel\source\repos\Separate\Separate.Data\obj\Debug\netcoreapp2.2\Separate.Data.pdb
