@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Separate.Data;
 using Separate.Data.Entities;
 using Separate.Services;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Separate
 {

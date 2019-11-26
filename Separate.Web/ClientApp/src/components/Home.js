@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 export class Home extends Component {
   static displayName = Home.name;
 
+  componentDidMount = () => {
+    fetch("https://localhost:44347/api/values").then(x => x.json()).then(response => {
+      console.log(response);
+    }).catch(x => console.log(x));
+  }
+
   render () {
     return (
       <div>
