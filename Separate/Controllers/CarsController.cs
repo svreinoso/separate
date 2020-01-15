@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Separate.Data;
 using Separate.Data.Entities;
 using Separate.Data.Enums;
+using Separate.Models;
 
 namespace Separate.Api.Controllers
 {
@@ -25,22 +26,32 @@ namespace Separate.Api.Controllers
 
         // GET: api/Cars
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Car>>> GetCars()
+        public async Task<ActionResult> GetCars()
         {
-            return await _context.Cars.ToListAsync();
+            var result = await _context.Cars.Include(x => x.Model).ThenInclude(x => x.Brand).Select(MapCar()).ToListAsync();
+            return Ok(result);
+        }
+
+        private static System.Linq.Expressions.Expression<Func<Car, CarDto>> MapCar()
+        {
+            return x => new CarDto
+            {
+                Id = x.Id,
+                ModelId = x.ModelId,
+                ReleaseYear = x.ReleaseYear,
+                Price = x.Price,
+                Description = x.Description,
+                ModelName = x.Model.Name,
+                BrandName = x.Model.Brand.Name
+            };
         }
 
         // GET: api/Cars/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Car>> GetCar(int id)
+        public async Task<ActionResult<CarDto>> GetCar(int id)
         {
-            var car = await _context.Cars.FindAsync(id);
-
-            if (car == null)
-            {
-                return NotFound();
-            }
-
+            var car = await _context.Cars.Include(x => x.Model).ThenInclude(x => x.Brand).Select(MapCar()).FirstOrDefaultAsync(x => x.Id == id);
+            if (car == null) return NotFound();
             return car;
         }
 

@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OpenIddict.Validation;
 using Separate.Data;
 using Separate.Data.Entities;
+using Separate.Data.Enums;
 using Separate.Services;
 
 namespace Separate.Controllers
 {
+    [Authorize(AuthenticationSchemes = OpenIddictValidationDefaults.AuthenticationScheme, Roles = AppRoles.Admin + "," + AppRoles.Client)]
     [Route("api/[controller]")]
     [ApiController]
     public class BookmarksController : ControllerBase

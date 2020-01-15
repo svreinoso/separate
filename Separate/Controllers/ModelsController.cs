@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Separate.Data;
 using Separate.Data.Entities;
 using Separate.Data.Enums;
+using Separate.Models;
 
 namespace Separate.Api.Controllers
 {
@@ -25,16 +26,28 @@ namespace Separate.Api.Controllers
 
         // GET: api/Models
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Model>>> GetModels()
+        public async Task<ActionResult> GetModels()
         {
-            return await _context.Models.ToListAsync();
+            var result = await _context.Models.Include(x => x.Brand).Select(x => new ModelDto{ 
+                Id = x.Id,
+                Name = x.Name,
+                BrandId = x.BrandId,
+                BrandName = x.Brand.Name
+            }).ToListAsync();
+            return Ok(result);
         }
 
         // GET: api/Models/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Model>> GetModel(int id)
+        public async Task<ActionResult<ModelDto>> GetModel(int id)
         {
-            var model = await _context.Models.FindAsync(id);
+            var model = await _context.Models.Include(x => x.Brand).Select(x => new ModelDto
+            {
+                Id = x.Id,
+                Name = x.Name,
+                BrandId = x.BrandId,
+                BrandName = x.Brand.Name
+            }).FirstOrDefaultAsync(x => x.Id == id);
 
             if (model == null)
             {

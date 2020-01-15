@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Separate.Data;
 using Separate.Data.Entities;
+using Separate.Data.Enums;
 using Separate.Models;
 
 namespace Separate.Api.Controllers
@@ -44,6 +45,7 @@ namespace Separate.Api.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, AppRoles.Client);
                     return Ok();
                 }
                 AddErrors(result);
