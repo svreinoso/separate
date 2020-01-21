@@ -1,11 +1,15 @@
 # How to organize .net core large project. 
 
-## API
+### API
 
-## WEB
+### WEB
 
-## CONSOLE APP
+### CONSOLE APP
 
-## Data Library
+### Data Library
 
-## Logic Library
+### Logic Library
+
+### Authentication and Authorization with OpenIdConnect
+
+### Swagger
