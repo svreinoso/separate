@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import { httpGet } from '../HttpManager';
 
 export class Home extends Component {
   static displayName = Home.name;
 
-  componentDidMount = () => {
-    fetch("https://localhost:44347/api/values").then(x => x.json()).then(response => {
-      console.log(response);
-    }).catch(x => console.log(x));
+  componentDidMount = async () => {
+    const response = await httpGet('/Brands');
+    console.log(response);
   }
 
   render () {

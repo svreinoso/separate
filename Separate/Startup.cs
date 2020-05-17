@@ -74,10 +74,11 @@ namespace Separate
 
             services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
             {
-                builder.AllowAnyMethod().AllowAnyHeader()
-                       .WithOrigins("https://localhost:44329", "https://localhost:5001", 
-                    "http://localhost:3000", "http://localhost:3000/*")
-                       .AllowCredentials();
+                builder.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithOrigins("httsps://localhost:44329", "https://localhost:5001", "http://localhost:3000")
+                    // .AllowAnyOrigin()
+                    .AllowCredentials();
                 // builder.WithOrigins("https://localhost:44329", "https://localhost:5001", 
                 //     "http://localhost:3000", "http://localhost:3000/*",
                 //     "https://localhost:5000")
