@@ -11,9 +11,9 @@ export class ChatHub extends Component {
 
     componentDidMount() {
         let connection = new signalR.HubConnectionBuilder()
-            .withUrl("https://localhost:44347/api/chatHub")
+            .withUrl("https://localhost:5001/chatHub")
             .configureLogging(signalR.LogLevel.Information)
-            //.withAutomaticReconnect()
+            // .withAutomaticReconnect()
             .build();
 
         connection.on("send", data => {
@@ -23,6 +23,9 @@ export class ChatHub extends Component {
         connection.start().then((connectionId) => {
             console.log(`Connection reestablished. Connected with connectionId "${connectionId}".`);
             connection.invoke("send", "Hello");
+        }).catch(reason => {
+            console.log(reason)
+            console.log('error connecting')
         });
 
         //connection.onreconnecting((error) => {

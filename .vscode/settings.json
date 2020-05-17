@@ -1,0 +1,15 @@
+{
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "database": "${workspaceFolder}/Separate/separate.db",
+            "dialect": "SQLite",
+            "name": "separate"
+        },
+        {
+            "database": "${workspaceFolder}/Separate/separate.db",
+            "dialect": "SQLite",
+            "name": "se"
+        }
+    ]
+}

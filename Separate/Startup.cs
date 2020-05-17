@@ -74,8 +74,18 @@ namespace Separate
 
             services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
             {
-                builder.WithOrigins("https://localhost:44329", "https://localhost:5001",
-                    "https://localhost:5000").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                builder.AllowAnyMethod().AllowAnyHeader()
+                       .WithOrigins("https://localhost:44329", "https://localhost:5001", 
+                    "http://localhost:3000", "http://localhost:3000/*")
+                       .AllowCredentials();
+                // builder.WithOrigins("https://localhost:44329", "https://localhost:5001", 
+                //     "http://localhost:3000", "http://localhost:3000/*",
+                //     "https://localhost:5000")
+                //     .SetIsOriginAllowed((host) => true)
+                //     .AllowAnyMethod()
+                //     // .AllowCredentials()
+                //     .AllowAnyHeader();
+                //     // .AllowAnyOrigin();
             }));
 
             services.AddSwaggerGen(c =>
